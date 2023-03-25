@@ -1,0 +1,17 @@
+package com.enigma.challengedatapenduduk.repository;
+
+import com.enigma.challengedatapenduduk.models.entities.Penduduk;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface PendudukRepository extends JpaRepository<Penduduk, Long>, PagingAndSortingRepository<Penduduk, Long> {
+    List<Penduduk> findByNamaContains(String nama, Pageable pageable);
+    Optional<Penduduk> findByNik(String nik);
+}
